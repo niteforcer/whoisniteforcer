@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>niteforcer</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            cursor: pointer;
+            font-family: "Times New Roman", serif;
+        }
+
+        body {
+            background: url('niteforcer.gif') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Центрируем текст */
+        #helloText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            pointer-events: none; /* текст не мешает кликам */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Текст вместо звука -->
+    <div id="helloText">я здесь</div>
+
+    <!-- Музыка -->
+    <audio id="music" src="niteforcer.mp3"></audio>
+    <audio id="warning" src="warning1.mp3"></audio>
+
+    <script>
+        const music = document.getElementById('music');
+        const warning = document.getElementById('warning');
+        let musicPlayed = false;
+
+        function handleClick() {
+            if (!musicPlayed) {
+                // Первый клик — запускаем основную музыку
+                music.play();
+                musicPlayed = true;
+            } else {
+                // Второй клик — проигрываем warning, затем переадресация
+                warning.play();
+                warning.addEventListener('ended', () => {
+                    window.location.href = "https://band.link/nfadrenaline";
+                });
+                document.body.removeEventListener('click', handleClick);
+            }
+        }
+
+        document.body.addEventListener('click', handleClick);
+    </script>
+
+</body>
+</html>
