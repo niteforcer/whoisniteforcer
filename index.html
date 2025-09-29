@@ -20,7 +20,7 @@
             position: relative;
         }
 
-        /* Центрируем текст */
+        
         #helloText {
             position: absolute;
             top: 50%;
@@ -28,16 +28,16 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 24px;
-            pointer-events: none; /* текст не мешает кликам */
+            pointer-events: none; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Текст вместо звука -->
-    <div id="helloText">я здесь</div>
+   
+    <div id="helloText">нажми и узнаешь</div>
 
-    <!-- Музыка -->
+    
     <audio id="music" src="niteforcer.mp3"></audio>
     <audio id="warning" src="warning1.mp3"></audio>
 
@@ -48,11 +48,11 @@
 
         function handleClick() {
             if (!musicPlayed) {
-                // Первый клик — запускаем основную музыку
+               
                 music.play();
                 musicPlayed = true;
             } else {
-                // Второй клик — проигрываем warning, затем переадресация
+                
                 warning.play();
                 warning.addEventListener('ended', () => {
                     window.location.href = "https://band.link/nfadrenaline";
@@ -66,3 +66,4 @@
 
 </body>
 </html>
+
